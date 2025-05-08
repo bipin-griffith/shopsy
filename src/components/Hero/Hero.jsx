@@ -3,21 +3,23 @@ import Image1 from "../../assets/hero/women.png";
 import Image2 from "../../assets/hero/shopping.png";
 import Image3 from "../../assets/hero/sale.png";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const ImageList = [
   {
     id: 1,
     img: Image1,
-    title: "Upto 50% off on all Men's Wear",
+    title: "Up to 40% Off on Herbal Supplements",
     description:
-      "lorem His Life will forever be Changed dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Support your immunity and overall wellness with our best-selling Ayurvedic herbs like Ashwagandha, Triphala, and Giloy – naturally sourced and clinically tested.",
   },
   {
     id: 2,
     img: Image2,
-    title: "30% off on all Women's Wear",
+    title: "30% Off on Ayurvedic Skincare Essentials",
     description:
-      "Who's there lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Reveal your natural glow with our Ayurvedic skincare range made from neem, turmeric, and sandalwood – crafted for radiant, healthy skin without chemicals.",
   },
   {
     id: 3,
@@ -29,7 +31,7 @@ const ImageList = [
 ];
 
 const Hero = ({ handleOrderPopup }) => {
-  var settings = {
+  const settings = {
     dots: false,
     arrows: false,
     infinite: true,
@@ -43,16 +45,17 @@ const Hero = ({ handleOrderPopup }) => {
   };
 
   return (
-    <div className="relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gray-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200 ">
+    <div className="relative overflow-hidden min-h-[550px] sm:min-h-[650px] bg-gray-100 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200">
       {/* background pattern */}
-      <div className="h-[700px] w-[700px] bg-primary/40 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z[8]"></div>
+      <div className="h-[700px] w-[700px] bg-primary/40 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z-10"></div>
+
       {/* hero section */}
       <div className="container pb-8 sm:pb-0">
         <Slider {...settings}>
           {ImageList.map((data) => (
-            <div>
+            <div key={data.id}>
               <div className="grid grid-cols-1 sm:grid-cols-2">
-                {/* text content section */}
+                {/* text section */}
                 <div className="flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10">
                   <h1
                     data-aos="zoom-out"
@@ -83,6 +86,7 @@ const Hero = ({ handleOrderPopup }) => {
                     </button>
                   </div>
                 </div>
+
                 {/* image section */}
                 <div className="order-1 sm:order-2">
                   <div
@@ -92,8 +96,8 @@ const Hero = ({ handleOrderPopup }) => {
                   >
                     <img
                       src={data.img}
-                      alt=""
-                      className="w-[300px] h-[300px] sm:h-[450px] sm:w-[450px] sm:scale-105 lg:scale-120 object-contain mx-auto"
+                      alt={data.title}
+                      className="w-[300px] h-[300px] sm:h-[450px] sm:w-[450px] object-contain mx-auto"
                     />
                   </div>
                 </div>
